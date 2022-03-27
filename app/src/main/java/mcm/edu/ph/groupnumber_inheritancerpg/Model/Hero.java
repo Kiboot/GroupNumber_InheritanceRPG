@@ -1,5 +1,7 @@
 package mcm.edu.ph.groupnumber_inheritancerpg.Model;
 
+import java.util.Random;
+
 public class Hero extends GameUnit{
 
     double expPoint;
@@ -15,6 +17,7 @@ public class Hero extends GameUnit{
     double healthPoint;
     double manaPoint;
     int atkMax;
+    int atkMin;
 
 
     public Hero(){} //default constructor
@@ -60,6 +63,17 @@ public class Hero extends GameUnit{
         this.atkMax = super.getAtkMax();
         this.atkMax += (strength * 2);
         return this.atkMax;
+    }
+    @Override
+    public int getAtkMin() {
+        this.atkMin = super.getAtkMin();
+        this.atkMin += (agility * 2);
+        return this.atkMax;
+    }
+    @Override
+    int baseDamage(int atkMin, int atkMax){
+        Random randomizer = new Random();
+        return (randomizer.nextInt(this.atkMax - this.atkMin) +this.atkMin);
     }
 
 
